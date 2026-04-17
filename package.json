@@ -9,7 +9,11 @@
     "preview": "vp preview",
     "prepare": "vp config"
   },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  },
   "devDependencies": {
+    "@types/leaflet": "^1.9.21",
     "typescript": "~6.0.2",
     "vite": "catalog:",
     "vite-plus": "catalog:"
