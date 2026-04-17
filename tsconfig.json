@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2023",
+    "target": "esnext",
     "module": "esnext",
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM"],
     "types": ["vite/client"],
     "skipLibCheck": true,
 
