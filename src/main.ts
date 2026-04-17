@@ -1,12 +1,7 @@
 import "./style.css";
-import "leaflet/dist/leaflet.css";
-import L, { LatLng } from "leaflet";
+import { getBusLocations } from "./database";
+import { setBusLocations } from "./map";
 
-const BTC = new LatLng(42.278425133686646, -83.74699558741413);
+const busses = await getBusLocations();
 
-var map = L.map("map").setView(BTC, 13);
-
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+setBusLocations(busses);
