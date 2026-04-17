@@ -9,7 +9,14 @@ const supabase = createClient<Database>(
 );
 
 export async function getBusLocations() {
-  const { data, error } = await supabase.from("bus_locations").select("*");
+  const now = Temporal.Now.instant();
+  const cutoff = now.add({ hours: -1 });
+
+  const { data, error } = await supabase
+    .from("bus_locations")
+    .select("*")
+    .filter("timestamp", "gt", cutoff)
+    .order("timestamp");
   if (error) {
     throw error;
   }
