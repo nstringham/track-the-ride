@@ -5,7 +5,7 @@ export type BusLocation = Tables<"bus_locations">;
 
 const supabase = createClient<Database>(
   "https://wvycoklsjdarcqtjfkdt.supabase.co",
-  import.meta.env.VITE_SUPABASE_KEY,
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
 );
 
 export async function getBusLocations() {
