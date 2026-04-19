@@ -1,14 +1,10 @@
-const busHues: { [busId: string]: number } = {};
+const busHues = new Map<string, number>();
 
 const lightness = 2 / 3;
 const maxChroma = 0.175;
 
 export function getBusColor(busId: string, timestamp: Temporal.Instant): string {
-  if (!(busId in busHues)) {
-    busHues[busId] = (Object.keys(busHues).length * 137.5) % 360;
-  }
-
-  const hue = busHues[busId];
+  const hue = busHues.getOrInsert(busId, (busHues.size * 137.5) % 360);
 
   const ageMinutes = Temporal.Now.instant().since(timestamp).total("minutes");
 
