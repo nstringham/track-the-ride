@@ -1,3 +1,3 @@
-# track-the-ride
+# Track The Ride
 
 An unofficial bus tracker
