@@ -9,8 +9,7 @@ const supabase = createClient<Database>(
 );
 
 export async function getBusLocations() {
-  const now = Temporal.Now.instant();
-  const cutoff = now.add({ hours: -1 });
+  const cutoff = new Date(Date.now() - 60 * 60 * 1000).toISOString();
 
   const { data, error } = await supabase
     .from("bus_locations")

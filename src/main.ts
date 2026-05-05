@@ -2,6 +2,9 @@ import "./style.css";
 import { getBusLocations } from "./database";
 import { setBusLocations } from "./map";
 
-const busses = await getBusLocations();
-
-setBusLocations(busses);
+try {
+  const buses = await getBusLocations();
+  setBusLocations(buses);
+} catch (error) {
+  console.error("Failed to load bus locations", error);
+}

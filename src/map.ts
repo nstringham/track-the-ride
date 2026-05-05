@@ -20,10 +20,13 @@ export function setBusLocations(locations: BusLocation[]) {
   for (const location of locations) {
     const marker = L.circleMarker([location.latitude, location.longitude]).addTo(group);
 
-    const timestamp = Temporal.Instant.from(location.timestamp);
-    marker.bindPopup(`Bus #${location.bus_id}<br>${timeFormatter.format(timestamp)}`);
+    const timestamp = new Date(location.timestamp);
+    const hasValidTimestamp = !Number.isNaN(timestamp.getTime());
+    marker.bindPopup(
+      `Bus #${location.bus_id}<br>${hasValidTimestamp ? timeFormatter.format(timestamp) : "Unknown time"}`,
+    );
 
-    const color = getBusColor(location.bus_id, timestamp);
+    const color = getBusColor(location.bus_id, hasValidTimestamp ? timestamp : new Date());
 
     marker.setStyle({
       radius: 12,
